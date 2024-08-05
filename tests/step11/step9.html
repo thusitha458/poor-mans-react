@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>React App</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script src="react-utils.js"></script>
+    <script src="react.js"></script>
+    <script>
+      class Hello extends React.Component {
+        render() {
+          return React.createElement(
+            "button",
+            { onclick: this.props.onClick, "data-testid": "my-button" },
+            "Click me"
+          );
+        }
+      }
+      const helloWorld = React.createElement(
+        Hello,
+        {
+          onClick: () => {
+            alert("Clicked!");
+          },
+        },
+        null
+      );
+      ReactDOM.render(helloWorld, document.getElementById("root"));
+    </script>
+  </body>
+</html>

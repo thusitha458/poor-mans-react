@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>React App</title> 
+  </head>
+  <body>
+    <div id="root"></div>
+    <script src="react-utils.js"></script>
+    <script src="react.js"></script>
+    <script>
+      // <h1>Hello, World!</h1>
+      const helloWorld = React.createElement("h1", null, "Hello, World!");
+      ReactDOM.render(helloWorld, document.getElementById("root"));
+    </script>
+  </body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>React App</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script src="react-utils.js"></script>
+    <script src="react.js"></script>
+    <script>
+      /**
+       * function Hello() {
+       *   return <div>Hello, World!</div>;
+       * }
+       * 
+       * <div>
+       *   <Hello />
+       *   <Hello />
+       *   <div>Just a div</div>
+       *   Just a text
+       * </div>
+       */
+      function Hello() {
+        return React.createElement("div", null, "Hello, World!");
+      }
+      
+      const helloWorld1 = React.createElement(Hello, null, null);
+      const helloWorld2 = React.createElement(Hello, null, null);
+      const regularDiv = React.createElement("div", null, "Just a div");
+      const parent = React.createElement(
+        "div",
+        null,
+        helloWorld1,
+        helloWorld2,
+        regularDiv,
+        "Just a text"
+      );
+      ReactDOM.render(parent, document.getElementById("root"));
+    </script>
+  </body>
+</html>
