@@ -104,7 +104,7 @@ test("should be able to manage state in React class components", async ({
   await page.goto(
     `file://${getTestDirectoryPath()}/${getParentDirectory()}/step10.html`
   );
-  
+
   await expect(page.getByText("0")).toBeVisible();
 
   await page.getByText("Increment").click();
@@ -117,21 +117,22 @@ test("should be able to manage state in React class components", async ({
   await expect(page.getByText("1")).toBeVisible();
 });
 
-test("should be able to manage state in React class components when the root component is not a React class component", async ({
+test("should be able to manage state in React class components when the root component is a React class component and has multiple class components inside it", async ({
   page,
 }) => {
   await page.goto(
     `file://${getTestDirectoryPath()}/${getParentDirectory()}/step11.html`
   );
-  
-  await expect(page.getByText("0")).toBeVisible();
 
-  await page.getByText("Increment").click();
-  await expect(page.getByText("1")).toBeVisible();
+  await expect(page.getByText("Count 1 = 0")).toBeVisible();
+  await page.getByText("Increment 1").click();
+  await expect(page.getByText("Count 1 = 1")).toBeVisible();
+  await page.getByText("Increment 1").click();
+  await expect(page.getByText("Count 1 = 2")).toBeVisible();
+  await page.getByText("Decrement 1").click();
+  await expect(page.getByText("Count 1 = 1")).toBeVisible();
 
-  await page.getByText("Increment").click();
-  await expect(page.getByText("2")).toBeVisible();
-
-  await page.getByText("Decrement").click();
-  await expect(page.getByText("1")).toBeVisible();
+  await expect(page.getByText("Count 2 = 0")).toBeVisible();
+  await page.getByText("Increment 2").click();
+  await expect(page.getByText("Count 2 = 1")).toBeVisible();
 });

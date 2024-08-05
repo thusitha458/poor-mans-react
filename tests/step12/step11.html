@@ -28,8 +28,8 @@
           return React.createElement(
             "div",
             null,
-            React.createElement("div", null, "My Counter"),
-            React.createElement("div", null, this.state.count),
+            React.createElement("div", null, `Counter ${this.props.name}`),
+            React.createElement("div", null, `Count ${this.props.name} = ${this.state.count}`),
             React.createElement(
               "button",
               {
@@ -37,7 +37,7 @@
                   this.setState({ count: this.state.count + 1 });
                 },
               },
-              "Increment"
+              `Increment ${this.props.name}`
             ),
             React.createElement(
               "button",
@@ -46,7 +46,7 @@
                   this.setState({ count: this.state.count - 1 });
                 },
               },
-              "Decrement"
+              `Decrement ${this.props.name}`
             )
           );
         }
@@ -55,14 +55,16 @@
       class Root extends React.Component {
         /**
          * <div>
-         *   <Counter />
+         *   <Counter name={"1"} />
+         *   <Counter name={"2"} />
          * </div>
          */
         render() {
           return React.createElement(
             "div",
             null,
-            React.createElement(Counter, null, null)
+            React.createElement(Counter, {name: '1'}, null),
+            React.createElement(Counter, {name: '2'}, null)
           );
         }
       }
