@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>React App</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script src="react.js"></script>
+    <script>
+      class Counter extends React.Component {
+        constructor(props) {
+          super(props);
+          this.state = { count: 0 };
+        }
+
+        render() {
+          /**
+           * <div>
+           *   <div>My Counter</div>
+           *   <div>{this.state.count}</div>
+           *   <button onClick={() => {..}}>Increment</button>
+           *   <button onClick={() => {..}}>Decrement</button>
+           * </div>
+           */
+          return React.createElement(
+            "div",
+            null,
+            React.createElement("div", null, `Counter ${this.props.name}`),
+            React.createElement("div", null, `Count ${this.props.name} = ${this.state.count}`),
+            React.createElement(
+              "button",
+              {
+                onClick: () => {
+                  this.setState({ count: this.state.count + 1 });
+                },
+              },
+              `Increment ${this.props.name}`
+            ),
+            React.createElement(
+              "button",
+              {
+                onClick: () => {
+                  this.setState({ count: this.state.count - 1 });
+                },
+              },
+              `Decrement ${this.props.name}`
+            )
+          );
+        }
+      }
+
+      class Root extends React.Component {
+        /**
+         * <div>
+         *   <Counter name={"1"} />
+         *   <Counter name={"2"} />
+         * </div>
+         */
+        render() {
+          return React.createElement(
+            "div",
+            null,
+            React.createElement(Counter, {name: '1'}, null),
+            React.createElement(Counter, {name: '2'}, null)
+          );
+        }
+      }
+
+      const root = React.createElement(Root, null, null);
+      ReactDOM.render(root, document.getElementById("root"));
+    </script>
+  </body>
+</html>

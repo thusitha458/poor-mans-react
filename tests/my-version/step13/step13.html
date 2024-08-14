@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>React App</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script src="react.js"></script>
+    <script>
+      function Hello(props) {
+        const [count, setCount] = React.useState(0);
+
+        return React.createElement(
+          "div",
+          null,
+          React.createElement(
+            "button",
+            {
+              onClick: () => {
+                setCount(count + 1);
+              },
+            },
+            `Count: ${count}`
+          )
+        );
+      }
+
+      function Wrapper() {
+        return React.createElement(
+          "div",
+          null,
+          React.createElement(Hello, null, null),
+          React.createElement(Hello, null, null)
+        );
+      }
+
+      const wrapper = React.createElement(Wrapper, null, null);
+      ReactDOM.render(wrapper, document.getElementById("root"));
+    </script>
+  </body>
+</html>
